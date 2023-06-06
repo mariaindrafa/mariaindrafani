@@ -13,6 +13,26 @@
         Nama
         <input rype="text" id="txNAMA">
     </div>
+    <div>
+        email 
+        <input type="text"id="txEMAIL">
+    </div>
+    <div>
+        username
+        <input type="trxt" id="txUSER">
+
+    </div>
+    <div>
+        password
+        <input type="text" id="txPASS1">
+    </div>
+    <div>
+        vertivikasi password
+        <input type="text" id="txPASS2">
+    </div>
+    <div>
+        <button type="Button" id="cmdupdate" onclik="UpdateData()">Update</button>
+    </div>
     
     <script>
         const qstring=window.location.search;
@@ -25,15 +45,33 @@
         console.log(prid);
         jsHTTP.send();
         jsHTTP.onload =  function(){
-            const dta = JSON.pares(thist.responseText);
-            documentgetElementById("txNAMA").value = dta.isi[0][0];
+            const dta = JSON.parse(this.responseText);
+            document.getElementById("txNAMA").value = dta.isi[0][0];
+            document.getElementById("txEMAIL").value = dta.isi[0][1];
+            document.getElementById("txUSER").value = dta.isi[0][2];
+        };
 
-            
-        }
+        function UpdateData(){
+           let nm = document. getElementById("txNAMA").value();
+           let ema = document.getElementById("txEMAIL").value();
+           let usr = document.getElemetntById("txUSER").value();
+           let p1 = document.getElementById("PASS1").value();
+           let p2 = document.getElementById("PASS2").value();
+           let params = "nama"+nm+"&email="+ema+"&username="+usr+"&pass1="+p1+"&pass2="+p2+"&iduser="+prid+;
+           let cx = "https://webpro.ptov.my.id/api/curduser.php?aksi=update";
+           
+           const jsHTTP = new XMLHttpRequest();
+           jsHTTP.open("POST",cx,true);
+           jsHTTP.setRequestHearde("content-type","application/x-ww-form-urlencoded");
+           jsHTTP.sead(params);
+           //console.log("isi parameter: "+params);
 
-        
+           jsHTTP.onload = function(){
+               const data = JSON.parse(this.responseText);
+               console.log(data);
+           }
+        } 
 
-        
     </script>
 </body>
 </html>
