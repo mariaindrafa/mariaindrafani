@@ -1,0 +1,100 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>latihan JQuery 02</title>
+</head>
+<body>
+
+    <h3>Judul Form</h3>
+
+    <div id="navigasi">
+        <button type="button" class="persegi">Hitung Luas Persegi</button>
+        <button type="button"class="segi3">Hitung Luas Segitiga</button>
+    </div>
+    
+
+    <div id="hitungluaspersegi">
+        <div>
+            Nilai Panjang
+            <input type="number"class="pj">
+        </div>
+    </div>
+    <div>
+        Nilai Lebar
+        <input type="numbr"class="lb">
+        
+    </div>
+    <div>
+        <button type="button" class="cmdLP">hitung luas</button>
+    </div>
+    <div id="hasil">hasilnya</div>
+
+
+
+    <div id="hitungluassegi3"></div>
+</div>
+    
+
+<div id="hitungluaspersegi">
+    <div>
+        Nilai Alas
+        <input type="number"class="al">
+    </div>
+</div>
+<div>
+    Nilai Tinggi
+    <input type="numbr"class="tg">
+    
+</div>
+<div>
+    <button type="button" class="cmdLS">hitung luas</button>
+</div>
+<div id="hasil">hasilnya</div>
+
+    
+    <script src ="jquery-3.7.0.min.js"></script>
+    <script>
+        $(function(){
+            $("#hasil").hide();
+            $("#hitungluassegi3").hide();
+            $("hitungluaspersegi").hide();
+
+            let judul ="klik tonbol";
+            
+
+            $("persegi").click(function(){
+                $("#hitungluassegi3").hide(500);
+                $("#hitungluaspersegi").show(500);
+                judul("hitung luas persegi");
+                $("h3").html(judul);
+            });
+            $(".segi3").click(function(){
+                $("#hitungluaspersegi").hide(500);
+                $("#hitungluassegi3").show(500);
+                judul = "hitung luas segitiga";
+                
+            });
+            $("h3").html(judul);
+
+            $(".cmdLP").click(function({
+                let p =$(".PJ").val();
+                let L =$(".LB").val();
+                //PROSES
+                let LU=p*L;
+                //OUTPUT
+                let tx = "hasil:<br>hitung luas persegi dengan nilai panjang "+p+"dan lebar"+L;
+                tx +="adalah<br>luas = panjang x lebar<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                tx +="= "+p+"x"+L+"<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                tx +="= "+LU+"<br>jadi luasnya adalah"+ LU;
+
+                
+        });
+    
+    </script>
+</body>
+</html>
